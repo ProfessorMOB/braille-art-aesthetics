@@ -3,7 +3,7 @@
 
 void scan_file(
 	char *filename, 
-	unsigned char (*lookahead)(char current_char, char next_char)
+	unsigned char (*lookahead)(char current_char)
 );
 
 #endif 

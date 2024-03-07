@@ -24,9 +24,9 @@ int main(void) {
 
 unsigned char invert_braille_dots(char character) {
 	switch (character) {
-		case '⠀':
-			ascii_art[char_counter] = '⠀';
-			break;
+		// case '⠀':
+		// 	ascii_art[char_counter] = '⠀';
+		// 	break;
 		// case ' ':
 		// case ' ':
 		// case ' ':

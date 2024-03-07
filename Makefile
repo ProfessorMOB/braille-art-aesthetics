@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -pedantic --std=c11 -Iinclude
 # SRC=$(wildcard src/*.c)
-SRC=src/main.c
+SRC=src/main.c src/scanner.c
 OBJ=$(SRC:.c=.o)
 BIN=bin
 .PHONY: all test clean clean_again execute
