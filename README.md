@@ -2,6 +2,7 @@
 ## A tool to reverse braille unicode art black to/from white
 
 So I was going about my day, and I realized, "HEY! WHY CAN'T I FREAKING HAVE INVERTED VERSIONS OF MY BRAILLE UNICODE ART???" Zero apologies, btw
+
 And so I made this... thing. Basically, if you have ascii art that uses braille unicode characters, well, now you can invert them. Why would that be useful? One example would be lightmode/darkmode conversions. 
 Take this example with Skibidi toilet
 
@@ -155,7 +156,7 @@ If you're on lightmode, what you see above will look horrid to you, and if it do
 
 Note: you can do the same to convert braille art that looks better in dark mode to light mode. 
 
-Soooo, yeah. That's what this tool is. 
+Soooo, yeah. That's what this tool is. I couldn't find an equivalent anywhere, and I realized, hey I know how to code, so I made this. 
 
 # TODO
 Allow redirection of the output to a file
