@@ -157,6 +157,6 @@ Note: you can do the same to convert braille art that looks better in dark mode 
 
 Soooo, yeah. That's what this tool is. 
 
-#TODO
+# TODO
 Allow redirection of the output to a file
 
