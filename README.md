@@ -77,6 +77,7 @@ Take this example with Skibidi toilet
 (hmmmm skibidi toilet in Ohio 🤤)
 
 If you're on lightmode (like an unscrupulous complete sociopath), what you see above would look pretty normal (aside from it being a Skibidi Toilet). But if you're on darkmode, it will look absolutely horrid. Now, let's invert the dots using this tool. (Note, on github, there will be space between each new line so it won't look totally perfect, but once you execute the tool in the command line, it'll look better)
+
 Now, let's invert the dots 😈
 
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠛⠛⠛⠛⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -151,6 +152,8 @@ Now, let's invert the dots 😈
 (Skibidi dom dom dom yes yes)
 
 If you're on lightmode, what you see above will look horrid to you, and if it does, go home. If you're on darkmode, then we've essentially fixed this problem. Hooray!
+
+Note: you can do the same to convert braille art that looks better in dark mode to light mode. 
 
 Soooo, yeah. That's what this tool is. 
 
