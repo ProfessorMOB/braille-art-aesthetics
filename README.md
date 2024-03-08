@@ -75,7 +75,7 @@ Take this example with Skibidi toilet
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠒⠒⠀⠤⠤⠤⠤⠤⣀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠤⠤⠄⠒⠒⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 (hmmmm skibidi toilet in Ohio 🤤)
 
-If you're on lightmode (like an unscrupulous complete sociopath), what you see above would look pretty normal (aside from it being a Skibidi Toilet). But if you're on darkmode, it will look absolutely horrid. Now, let's invert the dots using this tool. 
+If you're on lightmode (like an unscrupulous complete sociopath), what you see above would look pretty normal (aside from it being a Skibidi Toilet). But if you're on darkmode, it will look absolutely horrid. Now, let's invert the dots using this tool. (Note, on github, there will be space between each new line so it won't look totally perfect, but once you execute the tool in the command line, it'll look better)
 
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠛⠛⠛⠛⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
