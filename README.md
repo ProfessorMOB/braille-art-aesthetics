@@ -156,7 +156,7 @@ If you're on lightmode, what you see above will look horrid to you, and if it do
 
 Note: you can do the same to convert braille art that looks better in dark mode to light mode. 
 
-Soooo, yeah. That's what this tool is. I couldn't find an equivalent anywhere, and I realized, hey I know how to code, so I made this. 
+Soooo, yeah. That's what this tool is. I couldn't find an equivalent anywhere, and I realized, hey I know how to code, so I made this. Also mind my slight hostility to light mode users. 
 
 # TODO
 Allow redirection of the output to a file
