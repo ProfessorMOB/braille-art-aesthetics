@@ -49,7 +49,10 @@ void invert_braille_dots(char *filename) {
 			if(cmp_wide_char(braichar, (L'⠀'+i))) braille_art[char_count++] = (L'⣿'-i);
 		}
 		if(cmp_wide_char(braichar, L'\n')) braille_art[char_count++] = braichar; 
-		else {}
+		// else {
+		// 	fprintf(stderr, "Error, encountered a non-braille character");
+		// 	a
+		// }
 
 		// Reallocate when it exceeeds the buffer limit
 		if (wcslen(braille_art) == (realloc_count*BUFFER-1)) { 
