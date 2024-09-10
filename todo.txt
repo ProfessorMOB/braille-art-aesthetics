@@ -1,0 +1,239 @@
+TODO: 
+implement a braille ascii mapper to allow for individual dots to be changed
+for more precise ascii art changes
+	braille hex values table
+		1	8
+		2	10
+		4	20
+		40	80
+	How the map works: 
+	each braille char is converted to a 2x4 multidim array by checking if a hex value
+	ordered from greatest to smallest is less than the braille character encoding and
+	then enabling the dot the hex value represents and substracting said hex value
+	from said the encoding, and then repeat
+
+	two solutions: 
+
+	create another x by y array where each x is the list of the aforementioned arrays
+	and y is a list of x, and each new line creates a new x
+
+	its placed in another buffer array, where at the end of each line, the buf array
+	data is imported to an x by y array
+
+	second one is more complicated to produce, but easier to use, first is simpler to
+	produce but harder to use, since I will always be working in multiples of 2 and 4
+	
+	sizeof(char[4][2])) will be used to allocate arrays of braille chars
+	[y][x][4][2] will be used either to convert to a pure x by y array or to be used
+	as is
+	or I could use a helper function that converts [y][x][4][2] to [y][x] and back
+		multiply y by 4 and x by 2, add the braille y to y, add the braille x to x
+		divide y by 4 and x by 2, modulus y by 4 and x by 2
+
+	func encode_braille_map//exceeds the buffer implies the buffer*reallocation count
+	
+	init the increments (x inc=0, y inc=0, y_realloc_count=1, x_realloc_count=1)
+	allocate a y array from a buffer (buffer*sizeof(x_array)
+	allocate an x array from a buffer (buffer*sizeof(char[4][2]))
+
+	scan the file for braille characters (start looping until EOF)
+	
+		if newline
+			if y inc exceeds the buffer-1, then reallocate memory for the y array and
+			increment the y_realloc_count
+			y[y-inc]=x_array{ x_len = x-inc, x=x }
+			x inc=0
+			y increment++
+			allocate x array (x_realloc_count*buffer*sizeof(char[4][2]))
+			continue
+	
+		if x inc exceeds the buffer-1, then reallocate memory for the x array
+		and increment the x_realloc_count
+		x[x inc]=extract_dot_tbl(braille char)
+		x increment++
+	// create the struct containing y and y_len
+
+
+	braille hex values table
+		1	8
+		2	10
+		4	20
+		40	80
+	Final Solution:
+	struct x_array int x_len char *x[4][2]
+	struct y_array int y_len x_array *y
+
+	func extract_dot_tbl
+	each braille char is converted to a 2x4 multidim array by checking if a hex value
+	ordered from greatest to smallest is less than the braille character encoding and
+	then enabling the dot the hex value represents and substracting said hex value
+	from said the encoding, and then repeat the encoding is a blank braille character
+	return the multi_dim array
+
+	func encode_braille_map//exceeds the buffer implies the buffer*reallocation count
+
+	allocate a y array from a buffer (buffer*sizeof(x_array))
+	init the increments (y inc=0, y_realloc_count=1, x_realloc_count=1)
+
+	scan the file for braille characters (start looping until EOF)
+	
+		init the increments (x inc=0)
+
+		if not newline or eof (to preserve the current fgetwc char)
+			allocate an x array from buffer (x_realloc_count*buffer*sizeof(char[4][2]))
+
+			x[x inc]=extract_dot_tbl(braille char)
+			x increment++
+
+			start looping until a newline/eof character is reached
+				if x inc exceeds the buffer-1, then reallocate memory for the x array
+				and increment the x_realloc_count
+		
+				x[x inc]=extract_dot_tbl(braille char)
+				x increment++
+		if y inc exceeds the buffer-1, then reallocate memory for the y array and
+		increment the y_realloc_count
+		y[y-inc]=x_array{ x_len = x-inc, x=x }
+		x_array = 0
+		x inc=0
+		y increment++
+	return y_array {y_len = y increment, y = y }
+
+	cartesian map structure
+	y len
+	y array
+		y1: 
+			x_len=#
+			x1, x2, x3, ... x#
+		y2: 
+			x_len
+			x1, x2, x3, ... x#
+		y3: 
+			x_len
+			x1, x2, x3, ... x#
+		...
+		y#
+			x_len
+			x1, x2, x3, ... x#
+Todo: 
+write a function that converts the cartesian map to braille characters again
+	
+	implement largest x length
+
+	Two solutions
+
+	func cartesian_decode
+
+	allocate a wint_t array from buffer (BUFFER*sizeof(wint_t))
+	init the increments (realloc_count=1)
+
+	for (int i = 0; i != y_array.ylen; i++) {
+		for (int j = 0; j != y_array.y[i].xlen; j++) {
+			chr_count=i*y_array.y[i].xlen+j;
+			braille_art[chr_count] = convert_to_braichar(y_array.y[i].x[j]);
+
+			if (chr_count == BUFFER*realloc_count-1) {
+				realloc_count++; 
+				braille_art = realloc(braille_art, realloc_count*BUFFER*sizeof(wint_t));
+			}
+		}
+		free(y_array.y[i].x);
+	}
+	free(y_array.y);
+
+	ORRRRRR
+
+	func cartesian_decode
+
+	allocate a wint_t array (y_array.ylen*y_array.largest_x_len*sizeof(wint_t))
+
+	for (int i = 0; i != y_array.ylen; i++) {
+		for (int j = 0; j != y_array.y[i].xlen; j++) {
+			chr_count=i*y_array.y[i].xlen+j;
+			braille_art[chr_count] = convert_to_braichar(y_array.y[i].x[j]);
+			}
+		}
+		free(y_array.y[i].x);
+	}
+	free(y_array.y);
+Idea
+Instead of allocating based on the largest x value, I would instead allocate
+based on the chr_count+the current x length, 
+i.e. (we add two to account for the newline and a possible null terminator)
+before the loop
+malloc((x_len+2)*sizeof(wint_t));
+at the end of each iteration of the outer loop
+realloc(braille_art, (chr_count+x_len+2)*sizeof(wint_t));
+
+Implementation: 
+	func cartesian_decode
+
+	chr_count=0
+
+	for (int i = 0; i != y_array.ylen; i++) {
+		braille_art = realloc((chr_count+y_array.y[0].x_len+2)*sizeof(wint_t));
+		for (int j = 0; j != y_array.y[i].xlen; j++) {
+			chr_count=i*y_array.y[i].xlen+j;
+			braille_art[chr_count] = convert_to_braichar(y_array.y[i].x[j]);
+			}
+		}
+		braille_art[++chr_count]=L'\n';
+		free(y_array.y[i].x);
+	}
+	braille_art[++chr_count]=L'\0';
+	free(y_array.y);
+(y.y[i].x_len) ?  : chr_count
+Todo:
+write helper functions (set_coord and get_coord) that translates normal 
+cartesian coordinates to the braille semi-cartesian coordinates. 
+
+when the 
+
+process of converting cart coords to braille 
+struct coord
+x,y
+y/4=y, x/2=x
+y%4=a, x%2=b
+
+get_dot func (struct y array, x, y)
+y/4=y, x/2=x
+y%4=a, x%2=b
+return y_array.y[y].x[x][a][b]
+
+set_dot func (struct y_array, x, y)
+y/4=y, x/2=x
+y%4-1=a, x%2-1=b // we subtract 1 to give us accurate array coordinates
+check if any of the values are negative, abort
+check if the xlen on that particular y is smaller than the x, if so realloc
+the x array to contain the x and change the length to accomodate x+buffer
+and update the x_len value
+
+Todo:
+make the program less daunting by separating it into different files, reorg
+it
+	separate the main function from cart.c, rename cart.c -> cartesian.c
+	separate the dot inverter in main.c into invert.c, include cart.c and 
+	invert.c independently into main
+logic out using a single byte and bitwise operations instead of a braille
+table
+	rewrite it if it is the case that its a good idea
+	then move on to implementing the clear background implementation
+
+implement the ability to remove all dots surrounding the edges of empty dots
+but leave a width of at least one to maintain borders
+implement the ability to round edges in braille
+I could use less memory and make the program faster by replacing char arrays
+with single characters and using bitwise operators
+
+instead of reading from a file, the code should read from standard input instead
+remove any all unnecessary global variables
+remove wint_t and replace with wchar_t when necessary
+Comment my code
+
+
+
+
+
+
+
+

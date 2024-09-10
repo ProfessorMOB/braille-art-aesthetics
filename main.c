@@ -71,7 +71,8 @@ void invert_braille_dots(char *filename) {
  * characters on MacOS silly :P
  * Honestly I don't know why, but it won't work. MacOS apparently can't
  * compare wide characters, but Linux can. This code should work on MacOS 
- * and Linux, but I have not tested it on Linux. 
+ * and Linux, and I tested the same C program involving the comparison
+ * between two wide characers, and it worked on linux but not mac. 
  */
 
 unsigned char cmp_wide_char(wint_t char1, wint_t char2) {
