@@ -1,7 +1,8 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -pedantic --std=c17 
-# SRC=$(wildcard src/*.c)-Iinclude
-SRC=cart.c
+CFLAGS=-Wall -Wextra -pedantic --std=c17 -Iinclude
+# SRC=$(wildcard src/*.c)
+SRC=main.c get_braille_contents.c
+# cart.c
 OBJ=$(SRC:.c=.o)
 BIN=invert_braille_dots
 .PHONY: all test clean clean_again execute

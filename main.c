@@ -3,85 +3,70 @@
 #include <string.h>
 #include <wchar.h>
 #include <locale.h>
+#include "get_braille_contents.h"
 
-void invert_braille_dots(char *filename); 
-unsigned char cmp_wide_char(wint_t char1, wint_t char2);
+int main(void) {
+	wchar_t *test = get_braille_contents("inputs/input.txt");
+	printf("%ls", test); 
+	free(test);
+	return 0;
+}
 
-wint_t *braille_art;
-unsigned long realloc_count; 
-unsigned long char_count;
-
-char mbchar1[4];
-char mbchar2[4];
-
-#define FALSE 0
-#define TRUE 1
-#define BUFFER 50
-
-int main(int argc, char *argv[]) { 
+/* int main(int argc, char *argv[]) {
 
 	if (argc != 2) {
-		fprintf(stderr, "Usage:\n invert_braille_dots file"); 
+		fprintf(stderr, "Usage:\n invert_braille_dots file");
 		return 1;
 	}
 	setlocale(LC_ALL, "");
-	braille_art = malloc(BUFFER*sizeof(wint_t));
-	char_count = 0;
-
-	invert_braille_dots(argv[1]);
-	printf("%ls", braille_art);
-
-	free(braille_art);
-	return 0; 
-}
-
-void invert_braille_dots(char *filename) {
-
-	// Open the file
-	FILE *fp = fopen(filename, "r");
-	if (!fp) { perror("Failed to read file:"); return; }
-	
-	wint_t braichar;
-
-	while ((braichar = fgetwc(fp)) != WEOF) {
-
-		for (wint_t i = 0; i < 256; i++) {
-			if(cmp_wide_char(braichar, (L'⠀'+i))) braille_art[char_count++] = (L'⣿'-i);
-		}
-		if(cmp_wide_char(braichar, L'\n')) braille_art[char_count++] = braichar; 
-		// else {
-		// 	fprintf(stderr, "Error, encountered a non-braille character");
-		// 	a
-		// }
-
-		// Reallocate when it exceeeds the buffer limit
-		if (wcslen(braille_art) == (realloc_count*BUFFER-1)) { 
-
-			// Start reallocation for the the remainder of the user input
-			realloc_count+=1; // increment reallocation counter
-			braille_art = realloc(braille_art, realloc_count*BUFFER*sizeof(wint_t));
-		}
+	wint_t *art = invert_braille_dots(argv[1]);
+	if (art) {
+		printf("%ls", art);
+		free(art);
+		return 0;
 	}
 
-	fclose(fp); 
-}
+	return 1;
+} */
 
-/* IMPORTANT
- * Why am I converting from wide to multibyte? Because I can't compare wide
- * characters on MacOS silly :P
- * Honestly I don't know why, but it won't work. MacOS apparently can't
- * compare wide characters, but Linux can. This code should work on MacOS 
- * and Linux, and I tested the same C program involving the comparison
- * between two wide characers, and it worked on linux but not mac. 
- */
+/* int main(void) {
 
-unsigned char cmp_wide_char(wint_t char1, wint_t char2) {
+	setlocale(LC_ALL, "");
+	// encode_braille_tbl(L'⣯');
+	// test_braille(braille_tbl);
+	// encode_braille_tbl(L'⢤');
+	// test_braille(braille_tbl);
+	// printf("%lc", decode_braille_tbl(braille_tbl));
+	struct y_array test = cartesian_encode("inputs/input6.txt");
+	// for (int x = 0; x!=6 ;x++) printf("%d\n", get_dot(test, x, 4));
+	// printf("%ls\n", cartesian_decode(test));
+	
+	// printf("%d,%d\n", get_dot(test, 0, 8), get_dot(test, 1, 8));
+	// printf("%d,%d\n\n", get_dot(test, 0, 9), get_dot(test, 1, 9));
+	//
+	// set_dot(test, 0, 8, 1); set_dot(test, 1, 8, 1);
+	// set_dot(test, 0, 9, 0); set_dot(test, 1, 9, 0);
+	// printf("%d,%d\n", get_dot(test, 0, 8), get_dot(test, 1, 8));
+	// printf("%d,%d\n\n\n", get_dot(test, 0, 9), get_dot(test, 1, 9));
+	//
+	// printf("%d,%d\n", get_dot(test, 0, 1), get_dot(test, 1, 1));
+	// printf("%d,%d\n\n", get_dot(test, 0, 2), get_dot(test, 1, 2));
+	//
+	// set_dot(test, 0, 1, 1); set_dot(test, 1, 1, 1);
+	// set_dot(test, 0, 2, 1); set_dot(test, 1, 2, 1);
+	// printf("%d,%d\n", get_dot(test, 0, 1), get_dot(test, 1, 1));
+	// printf("%d,%d\n\n", get_dot(test, 0, 2), get_dot(test, 1, 2));
 
-	mbchar1[0]=0, mbchar1[1]=0, mbchar1[2]=0, mbchar1[3]=0;
-	mbchar2[0]=0, mbchar2[1]=0, mbchar2[2]=0, mbchar2[3]=0;
-
-	wctomb(mbchar1, char1);
-	wctomb(mbchar2, char2);
-	if (!strncmp(mbchar1, mbchar2, 4)) { return TRUE; }
-	return FALSE;
-}
+	printf("%ls\n", cartesian_decode(test));
+	// for (int i = 0; i != test.y_len; i++) {
+	// 	for (int j = 0; j != test.y[i].x_len; j++) {
+	// 		test_braille(test.y[i].x[j]);
+	// 		printf("\n\n");
+	// 	}
+	// 	printf("\n\n");
+	// 	free(test.y[i].x);
+	// }
+	// free(test.y);
+	
+	return 0;
+} */

@@ -4,75 +4,14 @@
 #include <wchar.h>
 #include <locale.h>
 #include <math.h>
+#include "cartesian.h"
 
 #define BUFFER 50
 
 char braille_tbl[4][2];
 
-struct x_array {
-	int x_len;
-	char (*x)[4][2];
-};
-
-struct y_array {
-	int y_len;
-	struct x_array *y;
-	int largest_x_len;
-};
-
-void encode_braille_tbl(wint_t braichar);
-wint_t decode_braille_tbl(char brai_tbl[4][2]);
-
-struct y_array cartesian_encode(char *filename);
-wint_t *cartesian_decode(struct y_array y);
-
-char get_dot(struct y_array, int x, int y);
-void set_dot(struct y_array, int x, int y, char val);
-
 // test the braille table
-// void test_braille(char val[4][2]);
-
-int main(void) {
-
-	setlocale(LC_ALL, "");
-	// encode_braille_tbl(L'⣯');
-	// test_braille(braille_tbl);
-	// encode_braille_tbl(L'⢤');
-	// test_braille(braille_tbl);
-	// printf("%lc", decode_braille_tbl(braille_tbl));
-	struct y_array test = cartesian_encode("input6.txt");
-	// for (int x = 0; x!=6 ;x++) printf("%d\n", get_dot(test, x, 4));
-	// printf("%ls\n", cartesian_decode(test));
-	
-	// printf("%d,%d\n", get_dot(test, 0, 8), get_dot(test, 1, 8));
-	// printf("%d,%d\n\n", get_dot(test, 0, 9), get_dot(test, 1, 9));
-	//
-	// set_dot(test, 0, 8, 1); set_dot(test, 1, 8, 1);
-	// set_dot(test, 0, 9, 0); set_dot(test, 1, 9, 0);
-	// printf("%d,%d\n", get_dot(test, 0, 8), get_dot(test, 1, 8));
-	// printf("%d,%d\n\n\n", get_dot(test, 0, 9), get_dot(test, 1, 9));
-	//
-	// printf("%d,%d\n", get_dot(test, 0, 1), get_dot(test, 1, 1));
-	// printf("%d,%d\n\n", get_dot(test, 0, 2), get_dot(test, 1, 2));
-	//
-	// set_dot(test, 0, 1, 1); set_dot(test, 1, 1, 1);
-	// set_dot(test, 0, 2, 1); set_dot(test, 1, 2, 1);
-	// printf("%d,%d\n", get_dot(test, 0, 1), get_dot(test, 1, 1));
-	// printf("%d,%d\n\n", get_dot(test, 0, 2), get_dot(test, 1, 2));
-
-	printf("%ls\n", cartesian_decode(test));
-	// for (int i = 0; i != test.y_len; i++) {
-	// 	for (int j = 0; j != test.y[i].x_len; j++) {
-	// 		test_braille(test.y[i].x[j]);
-	// 		printf("\n\n");
-	// 	}
-	// 	printf("\n\n");
-	// 	free(test.y[i].x);
-	// }
-	// free(test.y);
-	
-	return 0;
-}
+void test_braille(char val[4][2]);
 
 void encode_braille_tbl(wint_t braichar) {
 	// clear the braichar
@@ -117,6 +56,34 @@ wint_t decode_braille_tbl(char brai_tbl[4][2]) {
 	return brai_char;
 }
 
+
+/* encode_braille_tbl
+ * change braichar to use wchar instead of wint_t *
+
+/* decode_braille_tbl
+ * change the return value in both the function and header, and change
+ * braichar to use wchar_t *
+ 
+/* cartesian_encode
+ * change the argument to use wchar_t braille_art instead since it won't be
+ * opening a file anymore to extract the content *
+ * get rid of the code that opens a file *
+ * change braichar to use wint_t instead *
+ * make the while loop not loop through a file but rather a string and check
+ * for null instead of weof *
+ * change the inner while loop to loop through a string instead of a file *
+ *
+/* cartesian_decode
+ * replace every wint_t with wchar_t *
+ *
+/* cartesian.h
+ * update every function declaration to match up with the functions in the
+ * respective file *
+ *
+/* IDEA
+ * save checkpoints for each newline in get_braille_contents function to
+ * avoid having to 
+ */
 
 struct y_array cartesian_encode(char *filename) {
 	
