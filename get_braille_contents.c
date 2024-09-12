@@ -5,11 +5,11 @@
 #include <locale.h>
 #include "get_braille_contents.h"
 
-unsigned long realloc_count = 1;
-unsigned long char_count = 0;
 #define BUFFER 50
 
 wchar_t *get_braille_contents(char *filename){
+	unsigned long realloc_count = 1;
+	unsigned long char_count = 0;
 
 	setlocale(LC_ALL, "");
 
@@ -30,5 +30,6 @@ wchar_t *get_braille_contents(char *filename){
 			braille_art = realloc(braille_art, realloc_count*BUFFER*sizeof(wchar_t));
 		}
 	}
+	braille_art[char_count] = L'\0';
 	return braille_art; 
 }

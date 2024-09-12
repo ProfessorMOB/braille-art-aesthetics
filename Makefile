@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -pedantic --std=c17 -Iinclude
 # SRC=$(wildcard src/*.c)
-SRC=main.c get_braille_contents.c
+SRC=main.c get_braille_contents.c cartesian.c invert.c
 # cart.c
 OBJ=$(SRC:.c=.o)
 BIN=invert_braille_dots

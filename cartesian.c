@@ -13,7 +13,8 @@ char braille_tbl[4][2];
 // test the braille table
 void test_braille(char val[4][2]);
 
-void encode_braille_tbl(wint_t braichar) {
+
+void encode_braille_tbl(wchar_t braichar) {
 	// clear the braichar
 	memset(braille_tbl, 0, sizeof(char[4][2]));
 	
@@ -40,9 +41,9 @@ void encode_braille_tbl(wint_t braichar) {
 	}
 }
 
-wint_t decode_braille_tbl(char brai_tbl[4][2]) {
+wchar_t decode_braille_tbl(char brai_tbl[4][2]) {
 
-	wint_t brai_char=L'⠀';
+	wchar_t brai_char=L'⠀';
 
 	brai_char += (brai_tbl[0][0] ? 0x1 : 0x0);
 	brai_char += (brai_tbl[0][1] ? 0x8 : 0x0);
@@ -56,36 +57,7 @@ wint_t decode_braille_tbl(char brai_tbl[4][2]) {
 	return brai_char;
 }
 
-
-/* encode_braille_tbl
- * change braichar to use wchar instead of wint_t *
-
-/* decode_braille_tbl
- * change the return value in both the function and header, and change
- * braichar to use wchar_t *
- 
-/* cartesian_encode
- * change the argument to use wchar_t braille_art instead since it won't be
- * opening a file anymore to extract the content *
- * get rid of the code that opens a file *
- * change braichar to use wint_t instead *
- * make the while loop not loop through a file but rather a string and check
- * for null instead of weof *
- * change the inner while loop to loop through a string instead of a file *
- *
-/* cartesian_decode
- * replace every wint_t with wchar_t *
- *
-/* cartesian.h
- * update every function declaration to match up with the functions in the
- * respective file *
- *
-/* IDEA
- * save checkpoints for each newline in get_braille_contents function to
- * avoid having to 
- */
-
-struct y_array cartesian_encode(char *filename) {
+struct y_array cartesian_encode(wchar_t *braille_art) {
 	
 	struct x_array *y = malloc(BUFFER*sizeof(struct x_array));
 	int x_inc = 0;
@@ -94,25 +66,23 @@ struct y_array cartesian_encode(char *filename) {
 	int y_realloc_count = 1;
 	char (*x)[4][2]=0;
 
-	FILE *fp = fopen(filename, "r");
-	if (!fp) { 
-		perror("Failed to read file:");
-		return (struct y_array) {0}; 
-	}
-
-	wint_t braichar;
+	wchar_t braichar;
 	int largest_x = 0;
 
-	while ((braichar = fgetwc(fp)) != WEOF) {
+	int char_count = 0;
+
+	while ((braichar=braille_art[char_count]) != L'\0') {
 		x_inc = 0;
+
 		if (braichar != L'\n') {
 
 			x = malloc(x_realloc_count*BUFFER*sizeof(char[4][2]));
 			encode_braille_tbl(braichar);
 			memcpy(*(x+x_inc),braille_tbl,sizeof(char[2][4]));
 			x_inc++; 
+			char_count++;
 			
-			while(((braichar = fgetwc(fp)) != WEOF) 
+			while ((braichar=braille_art[char_count]) != L'\0'
 				&& braichar != L'\n') {
 
 				if (x_inc == BUFFER*x_realloc_count-1) {
@@ -122,9 +92,12 @@ struct y_array cartesian_encode(char *filename) {
 				encode_braille_tbl(braichar);
 				memcpy(*(x+x_inc),braille_tbl,sizeof(char[2][4]));
 				x_inc++; 
+				char_count++;
 			}
 			largest_x= (largest_x<=x_inc) ? x_inc : largest_x;
 		}
+
+		char_count++;
 		if (y_inc == BUFFER*y_realloc_count-1) {
 			y_realloc_count++; 
 			y = realloc(y, y_realloc_count*BUFFER*sizeof(struct x_array));
@@ -132,20 +105,17 @@ struct y_array cartesian_encode(char *filename) {
 		y[y_inc]=(struct x_array) { x_inc, x };
 		x=0;
 		y_inc++; 
-
 	}
-	
-	fclose(fp); 
 
 	return (struct y_array) {y_inc, y, largest_x};
 }
 
-wint_t *cartesian_decode(struct y_array y) {
+wchar_t *cartesian_decode(struct y_array y) {
 	int chr_count = 0;
-	wint_t *braille_art = 0;
+	wchar_t *braille_art = 0;
 
 	for (int i =0; i != y.y_len; i++) {
-		braille_art = realloc(braille_art, (chr_count+y.y[i].x_len+2)*sizeof(wint_t));
+		braille_art = realloc(braille_art, (chr_count+y.y[i].x_len+2)*sizeof(wchar_t));
 
 		for (int j = 0; j != y.y[i].x_len; j++) {
 			braille_art[chr_count+j] = decode_braille_tbl(y.y[i].x[j]);
@@ -161,9 +131,7 @@ wint_t *cartesian_decode(struct y_array y) {
 }
 
 char dot_exists(struct y_array cartmap, int x, int y){
-	if ((cartmap.y[y].x_len > x) && (cartmap.y_len > y)) {
-		return 1;
-	}
+	if ((cartmap.y[y].x_len > x) && (cartmap.y_len > y)) return 1;
 	return 0;
 }
 

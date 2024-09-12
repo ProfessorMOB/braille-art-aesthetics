@@ -4,11 +4,36 @@
 #include <wchar.h>
 #include <locale.h>
 #include "get_braille_contents.h"
+#include "invert.h"
+#include "cartesian.h"
+#include <assert.h>
 
 int main(void) {
+	setlocale(LC_ALL, "");
 	wchar_t *test = get_braille_contents("inputs/input.txt");
-	printf("%ls", test); 
-	free(test);
+	wchar_t *test3 = invert_braille_dots(test);
+	struct y_array test1 = cartesian_encode(test3);
+	for (int y = 0; y < (test1.y_len*4); y++) {
+		for (int x = 0; x < (test1.largest_x_len*2); x++) {
+			if (get_dot(test1, x+1, y)) set_dot(test1, x, y, 0);
+			else {
+				break;
+			}
+		}
+	}
+	for (int y = 0; y < (test1.y_len*4); y++) {
+		for (int x = (test1.largest_x_len*2-1); x > 0; x--) {
+			if (get_dot(test1, x-1, y)) set_dot(test1, x, y, 0);
+			else {
+				break;
+			}
+		}
+	}
+	// printf("%ls", test);
+	wchar_t *test2 = cartesian_decode(test1);
+	printf("%ls", test2); 
+	// free(test);
+	// free(test2);
 	return 0;
 }
 

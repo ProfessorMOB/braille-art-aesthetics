@@ -238,6 +238,33 @@ remove any all unnecessary global variables
 remove wint_t and replace with wchar_t when necessary
 Comment my code
 
+/* encode_braille_tbl
+ * change braichar to use wchar instead of wint_t /
+
+/* decode_braille_tbl
+ * change the return value in both the function and header, and change
+ * braichar to use wchar_t /
+ 
+/* cartesian_encode
+ * change the argument to use wchar_t braille_art instead since it won't be
+ * opening a file anymore to extract the content *
+ * get rid of the code that opens a file *
+ * change braichar to use wint_t instead *
+ * make the while loop not loop through a file but rather a string and check
+ * for null instead of weof *
+ * change the inner while loop to loop through a string instead of a file *
+ *
+/* cartesian_decode
+ * replace every wint_t with wchar_t *
+ *
+/* cartesian.h
+ * update every function declaration to match up with the functions in the
+ * respective file *
+ *
+/* IDEA
+ * save checkpoints for each newline in get_braille_contents function to
+ * avoid having to 
+ */
 
 
 
