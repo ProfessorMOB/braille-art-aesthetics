@@ -1,4 +1,10 @@
 # braille-art-dot-inverter
+
+IMPORTANT: I really need to update this readme because I changed the code
+so much it doesn't do what it says here, I mean it still does but it won't
+work until I make it so myself, so if you want older functionality, change
+to a different commit
+
 ## A tool to reverse braille unicode art black to/from white
 
 So I was going about my day, and I realized, "HEY! WHY CAN'T I FREAKING HAVE INVERTED VERSIONS OF MY BRAILLE UNICODE ART???" Zero apologies, btw
