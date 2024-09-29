@@ -3,7 +3,6 @@
 #include <string.h>
 #include <wchar.h>
 #include <locale.h>
-#include <math.h>
 #include "cartesian.h"
 
 #define BUFFER 50

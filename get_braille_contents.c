@@ -7,6 +7,10 @@
 
 #define BUFFER 50
 
+/* Todo
+ * Detect when a non braille character is detected
+ */
+
 wchar_t *get_braille_contents(char *filename){
 	unsigned long realloc_count = 1;
 	unsigned long char_count = 0;

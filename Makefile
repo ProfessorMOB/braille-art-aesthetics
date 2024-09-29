@@ -4,7 +4,7 @@ CFLAGS=-Wall -Wextra -pedantic --std=c17 -Iinclude
 SRC=main.c get_braille_contents.c cartesian.c invert.c
 # cart.c
 OBJ=$(SRC:.c=.o)
-BIN=invert_braille_dots
+BIN=braille-art-aesthetics
 .PHONY: all test clean clean_again execute
 
 all: $(BIN)
@@ -18,8 +18,8 @@ $(BIN): $(OBJ)
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean clean_again: 
-	@if [ -f invert_braille_dots ]; then rm -r $(OBJ) $(BIN); fi
+	@if [ -f braille-art-aesthetics ]; then rm -r $(OBJ) $(BIN); fi
 
 execute: 
-	-@if [ -f invert_braille_dots ]; then ./invert_braille_dots; else echo "Bin not found"; fi
+	-@if [ -f braille-art-aesthetics]; then ./braille-art-aesthetics; else echo "Bin not found"; fi
 

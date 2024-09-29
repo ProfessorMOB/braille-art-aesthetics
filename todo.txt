@@ -222,21 +222,12 @@ it
 
 
 
-logic out using a single byte and bitwise operations instead of a braille
-table
-	rewrite it if it is the case that its a good idea
 move on to implementing the clear background implementation
 	implement the ability to remove all dots surrounding the edges of empty
 	dots but leave a width of at least one to maintain borders
-
-implement the ability to round edges in braille
-I could use less memory and make the program faster by replacing char arrays
-with single characters and using bitwise operators
-
 instead of reading from a file, the code should read from standard input instead
 remove any all unnecessary global variables
 remove wint_t and replace with wchar_t when necessary
-Comment my code
 
 /* encode_braille_tbl
  * change braichar to use wchar instead of wint_t /
@@ -265,6 +256,25 @@ Comment my code
  * save checkpoints for each newline in get_braille_contents function to
  * avoid having to 
  */
+
+TODO: 
+logic out using a single byte and bitwise operations instead of a braille
+table
+	rewrite it if it is the case that its a good idea
+I could use less memory and make the program faster by replacing char arrays
+with single characters and using bitwise operators *
+
+implement the command line system *
+implement the ability to round edges in braille *
+Comment my code *
+
+Concerning errors:
+invert_braille_dots(39509,0x1fb350c00) malloc: Incorrect checksum for freed object 0x12f00a800: probably modified after being freed.
+Corrupt value: 0x28ff000028ff
+invert_braille_dots(39509,0x1fb350c00) malloc: *** set a breakpoint in malloc_error_break to debug
+zsh: abort      ./invert_braille_dots
+
+
 
 
 
