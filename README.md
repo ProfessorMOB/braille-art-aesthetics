@@ -1,4 +1,4 @@
-#braille-art-aesthetic (was braille-art-dot-inverter)
+# braille-art-aesthetic (was braille-art-dot-inverter)
 the purpose of this project was so that I could have neater and better looking neovim dashboards involving braille art. I felt that they looked bad
 Sometimes the mode just didn't fit right with the art, i.e. I have dark mode but the art was lightmode. Sometimes it was the background too.
 I'll share two examples demonstrating the usage of this project
