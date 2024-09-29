@@ -74,6 +74,7 @@ and voilà
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⠷⠛⠻⠇⠀⠰⠀⠀⢀⠐⠈⢷⠱⣌⠉⢆⣁⡠⠛⠟⠻⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⡟⠋⢀⣀⡀⠠⣄⠐⠀⠀⠀⠀⠈⠠⠖⠀⢀⡀⠠⠁⠀⠤⠂⢈⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣧⣼⣿⣦⢠⣿⣤⢾⣿⣤⢠⣾⣤⢴⣾⣿⣿⣤⠴⣷⡤⣴⣿⣿⣿⣿⣿⣿⣿⣿
+
 I think this is pretty neat. 
 Lets do another example
 here is an some skibid toilet art (please dont ask why)
@@ -147,6 +148,7 @@ here is an some skibid toilet art (please dont ask why)
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠢⢄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠒⠒⠀⠤⠤⠤⠤⠤⣀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠤⠤⠄⠒⠒⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
 it looks pretty horrid in dark mode, so lets fix it
 ~~~
 braille-art-aesthetics -if input/input.txt
@@ -222,6 +224,7 @@ and voilà!
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣝⡻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢛⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣭⣭⣿⣛⣛⣛⣛⣛⠿⠿⠿⠿⠿⠿⠿⠿⠿⢿⣛⣛⣻⣭⣭⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+
 but one thing is really bothering me, and its the background. I don't like all these dots i want them to go away
 thankfully this tool can fix this
 ~~~
@@ -299,7 +302,7 @@ braille-art-aesthetics -irlf inputs/input.txt
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 voilà! this looks much nicer
 what the tool basically did was clear all dots that didn't have an empty dot after them if from left to right or an empty dot if from right to left
-essentially the 'r' option clears everything on the right starting from the end and finishing at where there is a dot
+essentially the 'r' option clears everything on the right starting from the end and finishing at where there is a dot, similar thing with the l option
 
 i use this tool mainly so i can beautify braille art, ive got a tonna ideas I want to implement such as borders (and perhaps even AI) but i haven't really gotten there yet
 
