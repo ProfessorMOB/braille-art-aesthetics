@@ -42,6 +42,7 @@ braille-art-aesthetics -if inputs/input4.txt
 ~~~
 (note: input/input4.txt is one of the example inputs provided to demonstrate this project)
 and voilà
+
 ﻿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⡿⢿⣿⣿⡿⠄⠀⠘⠋⢀⡀⠙⠿⣿⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⠟⠙⠁⠀⠀⠈⠉⠉⢀⣀⠠⣤⣉⣁⡄⢁⡀⠉⡁⠀⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⡏⠁⠀⢀⣀⣶⣿⣶⣌⣶⣶⣿⣯⣽⡿⣯⣿⣿⣷⣾⣭⣴⢂⠀⢨⣿⣿⣿⣿⣏⣿⣿⣿
@@ -78,6 +79,7 @@ and voilà
 I think this is pretty neat. 
 Lets do another example
 here is an some skibid toilet art (please dont ask why)
+
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⡿⡟⣯⡯⠿⣉⠭⠩⡍⠝⣛⢻⠿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -154,6 +156,7 @@ it looks pretty horrid in dark mode, so lets fix it
 braille-art-aesthetics -if input/input.txt
 ~~~
 and voilà!
+
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠛⠛⠛⠛⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⢀⢠⠐⢐⣀⠶⣒⣖⢲⣢⠤⡄⣀⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -300,6 +303,7 @@ braille-art-aesthetics -irlf inputs/input.txt
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠐⠝⡻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢛⠕⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠐⠉⠉⠻⠛⠛⠛⠛⢛⠿⠿⠿⠿⠿⠿⠿⠿⠿⢿⠛⠛⠻⠉⠉⠂⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
 voilà! this looks much nicer
 what the tool basically did was clear all dots that didn't have an empty dot after them if from left to right or an empty dot if from right to left
 essentially the 'r' option clears everything on the right starting from the end and finishing at where there is a dot, similar thing with the l option
