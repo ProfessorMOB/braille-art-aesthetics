@@ -15,7 +15,7 @@ void test_braille(char val[4][2]);
 
 void encode_braille_tbl(wchar_t braichar) {
 	// clear the braichar
-	memset(braille_tbl, 0, sizeof(char[4][2]));
+	memset(braille_tbl, 0, sizeof(braille_tbl));
 	
 	// Determine the dot locations through elimination
 	braichar-=L'⠀';
@@ -75,9 +75,9 @@ struct y_array cartesian_encode(wchar_t *braille_art) {
 
 		if (braichar != L'\n') {
 
-			x = malloc(x_realloc_count*BUFFER*sizeof(char[4][2]));
+			x = malloc(x_realloc_count*BUFFER*sizeof(braille_tbl));
 			encode_braille_tbl(braichar);
-			memcpy(*(x+x_inc),braille_tbl,sizeof(char[2][4]));
+			memcpy(*(x+x_inc),braille_tbl,sizeof(braille_tbl));
 			x_inc++; 
 			char_count++;
 			
@@ -86,17 +86,18 @@ struct y_array cartesian_encode(wchar_t *braille_art) {
 
 				if (x_inc == BUFFER*x_realloc_count-1) {
 					x_realloc_count++; 
-					x = realloc(x, x_realloc_count*BUFFER*sizeof(char[4][2]));
+					x = realloc(x, x_realloc_count*BUFFER*sizeof(braille_tbl));
 				}
 				encode_braille_tbl(braichar);
-				memcpy(*(x+x_inc),braille_tbl,sizeof(char[2][4]));
+				memcpy(*(x+x_inc),braille_tbl,sizeof(braille_tbl));
 				x_inc++; 
 				char_count++;
 			}
 			largest_x= (largest_x<=x_inc) ? x_inc : largest_x;
 		}
 
-		char_count++;
+		
+		if (braille_art[char_count] == L'\n') char_count++;
 		if (y_inc == BUFFER*y_realloc_count-1) {
 			y_realloc_count++; 
 			y = realloc(y, y_realloc_count*BUFFER*sizeof(struct x_array));
@@ -130,7 +131,7 @@ wchar_t *cartesian_decode(struct y_array y) {
 }
 
 char dot_exists(struct y_array cartmap, int x, int y){
-	if ((cartmap.y[y].x_len > x) && (cartmap.y_len > y)) return 1;
+	if (cartmap.y_len > y) if (cartmap.y[y].x_len > x) return 1;
 	return 0;
 }
 
@@ -154,14 +155,14 @@ void set_dot(struct y_array cartmap, int x, int y, char val) {
 	if (!dot_exists(cartmap, x, y)) {
 		if (cartmap.y_len <= y) {
 
-			cartmap.y = realloc(cartmap.y, y*sizeof(struct x_array));
-			cartmap.y[y].x=realloc(cartmap.y[y].x,x*sizeof(char[4][2]));
+			cartmap.y = realloc(cartmap.y, y*sizeof(struct x_array)+1);
+			cartmap.y[y].x=realloc(cartmap.y[y].x,x*sizeof(braille_tbl)+1);
 			cartmap.y_len= y + 1; // '+ 1' to account for 0 indexing
 			cartmap.y[y].x_len= x + 1; // '+ 1' to account for 0 indexing
 		}
 		else if (cartmap.y[y].x_len <= x) {
 			
-			cartmap.y[y].x=realloc(cartmap.y[y].x,x*sizeof(char[4][2]));
+			cartmap.y[y].x=realloc(cartmap.y[y].x,x*sizeof(braille_tbl)+1);
 			cartmap.y[y].x_len= x + 1; // '+ 1' to account for 0 indexing
 		}
 	}

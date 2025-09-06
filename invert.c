@@ -20,22 +20,23 @@ wchar_t *invert_braille_dots(wchar_t *art) {
 	
 	while ((braichar = art[char_count]) != L'\0') {
 
-		for (wchar_t i = 0; i < 256; i++) {
-
-			if (braichar == (L'⠀'+i)) braille_art[char_count] = (L'⣿'-i); 
-		}
-		if (braichar == L'\n') braille_art[char_count] = braichar; 
+		// for (wchar_t i = 0; i < 256; i++) {
+		//
+		// 	if (braichar == (L'⠀'+i)) braille_art[char_count] = (L'⣿'-i); 
+		// }
+		// if (braichar == L'\n') braille_art[char_count] = braichar; 
+		braille_art[char_count] = (braichar >= L'⠀' && braichar <= L'⣿') ? L'⣿' - (braichar - L'⠀') : braichar;
 
 		char_count++;
 
 		// Reallocate when it exceeeds the buffer limit
-		if (wcslen(braille_art) == (realloc_count*BUFFER-1)) { 
+		if (char_count == (realloc_count*BUFFER-1)) { 
 
 			// Start reallocation for the the remainder of the user input
 			realloc_count+=1; // increment reallocation counter
 			braille_art = realloc(braille_art, realloc_count*BUFFER*sizeof(wchar_t));
 		}
 	}
-
+	braille_art[char_count] = L'\0';
 	return braille_art;
 }
